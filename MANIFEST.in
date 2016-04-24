@@ -1,0 +1,4 @@
+include *.rst LICENSE.md requirements.txt MANIFEST.in
+global-include *.txt *.sh
+recursive-include static
+prune tests
