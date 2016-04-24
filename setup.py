@@ -21,22 +21,27 @@ if pip_version >= (1, 5):
 
 
 setup(name=jasper.__title__,
-      version=jasper.__version__,
-      description=jasper.__description__,
-      classifiers=[
-          'Development Status :: 4 - Beta',
-          'License :: OSI Approved :: MIT License',
-          'Operating System :: OS Independent',
-          'Programming Language :: Python',
-          'Programming Language :: Python :: 2',
-          'Programming Language :: Python :: 2.7',
-          'Topic :: Software Development :: Libraries :: Python Modules',
-      ],
-      keywords='jasper tts stt',
-      url='https://github.com/jasperproject/jasper-client',
-      packages=find_packages(),
-      include_package_data=True,
-      install_requires=[
-          str(req.req) for req in parse_requirements('client/requirements.txt')
-      ],
+    version=jasper.__version__,
+    description=jasper.__description__,
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
+    keywords='jasper tts stt',
+    url='https://github.com/jasperproject/jasper-client',
+    packages=find_packages(),
+    include_package_data=True,
+    install_requires=[
+        str(req.req) for req in parse_requirements('client/requirements.txt')
+    ],
+    entry_points={
+        'console_scripts': [
+            'jasper=jasper:main'
+        ],
+    },
 )
