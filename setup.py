@@ -20,7 +20,8 @@ if pip_version >= (1, 5):
     parse_requirements.keywords['session'] = PipSession()
 
 
-setup(name=jasper.__title__,
+setup(
+    name=jasper.__title__,
     version=jasper.__version__,
     description=jasper.__description__,
     classifiers=[
