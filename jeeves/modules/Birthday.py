@@ -2,7 +2,7 @@
 import datetime
 import re
 import facebook
-from client.app_utils import getTimezone
+from jeeves.app_utils import getTimezone
 
 WORDS = ["BIRTHDAY"]
 
@@ -28,7 +28,7 @@ def handle(text, mic, profile):
     except facebook.GraphAPIError:
         mic.say("I have not been authorized to query your Facebook. If you " +
                 "would like to check birthdays in the future, please visit " +
-                "the Jasper dashboard.")
+                "the dashboard.")
         return
     except:
         mic.say(

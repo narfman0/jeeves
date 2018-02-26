@@ -2,9 +2,11 @@
 import urllib2
 import re
 import random
+
 from bs4 import BeautifulSoup
-from client import app_utils
 from semantic.numbers import NumberService
+
+from jeeves import app_utils
 
 WORDS = ["HACKER", "NEWS", "YES", "NO", "FIRST", "SECOND", "THIRD"]
 

@@ -4,7 +4,7 @@ import pkg_resources
 from setuptools import setup, find_packages
 from pip.req import parse_requirements as parse_reqs
 
-import client as jasper
+import jeeves
 
 
 # Compatibility with older versions of pip
@@ -21,9 +21,9 @@ if pip_version >= (1, 5):
 
 
 setup(
-    name=jasper.__title__,
-    version=jasper.__version__,
-    description=jasper.__description__,
+    name=jeeves.__title__,
+    version=jeeves.__version__,
+    description=jeeves.__description__,
     classifiers=[
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: MIT License',
@@ -33,16 +33,16 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    keywords='jasper tts stt',
-    url='https://github.com/jasperproject/jasper-client',
+    keywords='jeeves tts stt',
+    url='https://github.com/narfman0/jeeves',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        str(req.req) for req in parse_requirements('client/requirements.txt')
+        str(req.req) for req in parse_requirements('requirements.txt')
     ],
     entry_points={
         'console_scripts': [
-            'jasper=jasper:main'
+            'jeeves=jeeves:main'
         ],
     },
 )

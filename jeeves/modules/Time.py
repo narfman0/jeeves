@@ -1,8 +1,9 @@
 # -*- coding: utf-8-*-
 import datetime
 import re
-from client.app_utils import getTimezone
 from semantic.dates import DateService
+
+from jeeves.app_utils import getTimezone
 
 WORDS = ["TIME"]
 

@@ -1,12 +1,14 @@
 # -*- coding: utf-8-*-
 import random
 import re
-from client import jasperpath
+
+from jeeves import settings
+
 
 WORDS = ["JOKE", "KNOCK KNOCK"]
 
 
-def getRandomJoke(filename=jasperpath.data('text', 'JOKES.txt')):
+def getRandomJoke(filename=settings.data('text', 'JOKES.txt')):
     jokeFile = open(filename, "r")
     jokes = []
     start = ""

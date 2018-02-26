@@ -3,7 +3,7 @@ import re
 import logging
 import difflib
 import mpd
-from client.mic import Mic
+from jeeves.mic import Mic
 
 # Standard module stuff
 WORDS = ["MUSIC", "SPOTIFY"]
@@ -40,7 +40,7 @@ def handle(text, mic, profile):
     mic.say("Please give me a moment, I'm loading your Spotify playlists.")
 
     # FIXME: Make this configurable
-    persona = 'JASPER'
+    persona = 'JEEVES'
 
     logger.debug("Starting music mode")
     music_mode = MusicMode(persona, mic, mpdwrapper)

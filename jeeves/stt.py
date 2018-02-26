@@ -12,7 +12,8 @@ import subprocess
 from abc import ABCMeta, abstractmethod
 import requests
 import yaml
-import jasperpath
+
+from jeeves import settings
 import diagnose
 import vocabcompiler
 
@@ -34,7 +35,7 @@ class AbstractSTTEngine(object):
         config = cls.get_config()
         if cls.VOCABULARY_TYPE:
             vocabulary = cls.VOCABULARY_TYPE(vocabulary_name,
-                                             path=jasperpath.config(
+                                             path=settings.config(
                                                  'vocabularies'))
             if not vocabulary.matches_phrases(phrases):
                 vocabulary.compile(phrases)
@@ -134,7 +135,7 @@ class PocketSphinxSTT(AbstractSTTEngine):
         config = {}
         # HMM dir
         # Try to get hmm_dir from config
-        profile_path = jasperpath.config('profile.yml')
+        profile_path = settings.config('profile.yml')
 
         if os.path.exists(profile_path):
             with open(profile_path, 'r') as f:
@@ -226,7 +227,7 @@ class JuliusSTT(AbstractSTTEngine):
         config = {}
         # HMM dir
         # Try to get hmm_dir from config
-        profile_path = jasperpath.config('profile.yml')
+        profile_path = settings.config('profile.yml')
 
         if os.path.exists(profile_path):
             with open(profile_path, 'r') as f:
@@ -357,7 +358,7 @@ class GoogleSTT(AbstractSTTEngine):
         config = {}
         # HMM dir
         # Try to get hmm_dir from config
-        profile_path = jasperpath.config('profile.yml')
+        profile_path = settings.config('profile.yml')
         if os.path.exists(profile_path):
             with open(profile_path, 'r') as f:
                 profile = yaml.safe_load(f)
@@ -455,7 +456,7 @@ class AttSTT(AbstractSTTEngine):
         # FIXME: Replace this as soon as we have a config module
         config = {}
         # Try to get AT&T app_key/app_secret from config
-        profile_path = jasperpath.config('profile.yml')
+        profile_path = settings.config('profile.yml')
         if os.path.exists(profile_path):
             with open(profile_path, 'r') as f:
                 profile = yaml.safe_load(f)
@@ -560,7 +561,7 @@ class WitAiSTT(AbstractSTTEngine):
         # FIXME: Replace this as soon as we have a config module
         config = {}
         # Try to get wit.ai Auth token from config
-        profile_path = jasperpath.config('profile.yml')
+        profile_path = settings.config('profile.yml')
         if os.path.exists(profile_path):
             with open(profile_path, 'r') as f:
                 profile = yaml.safe_load(f)

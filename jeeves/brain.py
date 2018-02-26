@@ -1,7 +1,8 @@
 # -*- coding: utf-8-*-
 import logging
 import pkgutil
-import jasperpath
+
+from jeeves import settings
 
 
 class Brain(object):
@@ -33,7 +34,7 @@ class Brain(object):
         """
 
         logger = logging.getLogger(__name__)
-        locations = [jasperpath.PLUGIN_PATH]
+        locations = [settings.PLUGIN_PATH]
         logger.debug("Looking for modules in: %s",
                      ', '.join(["'%s'" % location for location in locations]))
         modules = []

@@ -9,16 +9,16 @@ import logging
 import yaml
 import argparse
 
-from client import tts
-from client import stt
-from client import jasperpath
-from client import diagnose
-from client.conversation import Conversation
+from jeeves import tts
+from jeeves import stt
+from jeeves import diagnose
+from jeeves.conversation import Conversation
 
-# Add jasperpath.LIB_PATH to sys.path
-sys.path.append(jasperpath.LIB_PATH)
+from jeeves import settings
 
-parser = argparse.ArgumentParser(description='Jasper Voice Control Center')
+sys.path.append(settings.LIB_PATH)
+
+parser = argparse.ArgumentParser(description='Jeeves Voice Control Center')
 parser.add_argument('--local', action='store_true',
                     help='Use text input instead of a real microphone')
 parser.add_argument('--no-network-check', action='store_true',
@@ -29,34 +29,34 @@ parser.add_argument('--debug', action='store_true', help='Show debug messages')
 args = parser.parse_args()
 
 if args.local:
-    from client.local_mic import Mic
+    from jeeves.local_mic import Mic
 else:
-    from client.mic import Mic
+    from jeeves.mic import Mic
 
 
-class Jasper(object):
+class Jeeves(object):
     def __init__(self):
         self._logger = logging.getLogger(__name__)
 
         # Create config dir if it does not exist yet
-        if not os.path.exists(jasperpath.CONFIG_PATH):
+        if not os.path.exists(settings.CONFIG_PATH):
             try:
-                os.makedirs(jasperpath.CONFIG_PATH)
+                os.makedirs(settings.CONFIG_PATH)
             except OSError:
                 self._logger.error("Could not create config dir: '%s'",
-                                   jasperpath.CONFIG_PATH, exc_info=True)
+                                   settings.CONFIG_PATH, exc_info=True)
                 raise
 
         # Check if config dir is writable
-        if not os.access(jasperpath.CONFIG_PATH, os.W_OK):
-            self._logger.critical("Config dir %s is not writable. Jasper " +
+        if not os.access(settings.CONFIG_PATH, os.W_OK):
+            self._logger.critical("Config dir %s is not writable. Jeeves " +
                                   "won't work correctly.",
-                                  jasperpath.CONFIG_PATH)
+                                  settings.CONFIG_PATH)
 
         # FIXME: For backwards compatibility, move old config file to newly
         #        created config dir
-        old_configfile = os.path.join(jasperpath.LIB_PATH, 'profile.yml')
-        new_configfile = jasperpath.config('profile.yml')
+        old_configfile = os.path.join(settings.LIB_PATH, 'profile.yml')
+        new_configfile = settings.config('profile.yml')
         if os.path.exists(old_configfile):
             if os.path.exists(new_configfile):
                 self._logger.warning("Deprecated profile file found: '%s'. " +
@@ -117,25 +117,24 @@ class Jasper(object):
             salutation = "How can I be of service?"
         self.mic.say(salutation)
 
-        conversation = Conversation("JASPER", self.mic, self.config)
+        conversation = Conversation("JEEVES", self.mic, self.config)
         conversation.handleForever()
 
 if __name__ == "__main__":
 
     print("*******************************************************")
-    print("*             JASPER - THE TALKING COMPUTER           *")
-    print("* (c) 2015 Shubhro Saha, Charlie Marsh & Jan Holthuis *")
+    print("*             JEEVES - THE TALKING COMPUTER           *")
     print("*******************************************************")
 
     logging.basicConfig()
     logger = logging.getLogger()
-    logger.getChild("client.stt").setLevel(logging.INFO)
+    logger.getChild("jeeves.stt").setLevel(logging.INFO)
 
     if args.debug:
         logger.setLevel(logging.DEBUG)
 
     if not args.no_network_check and not diagnose.check_network_connection():
-        logger.warning("Network not connected. This may prevent Jasper from " +
+        logger.warning("Network not connected. This may prevent Jeeves from " +
                        "running properly.")
 
     if args.diagnose:
@@ -143,7 +142,7 @@ if __name__ == "__main__":
         sys.exit(0 if not failed_checks else 1)
 
     try:
-        app = Jasper()
+        app = Jeeves()
     except Exception:
         logger.error("Error occured!", exc_info=True)
         sys.exit(1)

@@ -7,7 +7,9 @@ import subprocess
 import pkgutil
 import logging
 import pip.req
-import jasperpath
+
+from jeeves import settings
+
 if sys.version_info < (3, 3):
     from distutils.spawn import find_executable
 else:
@@ -18,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 def check_network_connection(server="www.google.com"):
     """
-    Checks if jasper can connect a network server.
+    Checks if we can connect a network server.
 
     Arguments:
         server -- (optional) the server to connect with (Default:
@@ -89,7 +91,7 @@ def check_python_import(package_or_module):
     return found
 
 
-def get_pip_requirements(fname=os.path.join(jasperpath.APP_PATH,
+def get_pip_requirements(fname=os.path.join(settings.APP_PATH,
                                             'requirements.txt')):
     """
     Gets the PIP requirements from a text file. If the files does not exists
@@ -97,7 +99,7 @@ def get_pip_requirements(fname=os.path.join(jasperpath.APP_PATH,
 
     Arguments:
         fname -- (optional) the requirement text file (Default:
-                 "client/requirements.txt")
+                 "requirements.txt")
 
     Returns:
         A list of pip requirement objects or None
@@ -147,7 +149,7 @@ def run():
     if loglvl == logging.NOTSET or loglvl > logging.INFO:
         logger.setLevel(logging.INFO)
 
-    logger.info("Starting jasper diagnostic at %s" % time.strftime("%c"))
+    logger.info("Starting diagnostic at %s" % time.strftime("%c"))
     logger.info("Git revision: %r", get_git_revision())
 
     failed_checks = 0
@@ -168,7 +170,7 @@ def run():
         else:
             logger.debug("PIP package '%s' found", req.name)
 
-    for fname in [os.path.join(jasperpath.APP_PATH, os.pardir, "phonetisaurus",
+    for fname in [os.path.join(settings.APP_PATH, os.pardir, "phonetisaurus",
                                "g014b2b.fst")]:
         logger.debug("Checking file '%s'...", fname)
         if not os.access(fname, os.R_OK):

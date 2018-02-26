@@ -2,7 +2,9 @@
 # -*- coding: utf-8-*-
 import unittest
 import imp
-from client import stt, jasperpath
+from client import stt
+
+from jeeves import settings
 
 
 def cmuclmtk_installed():
@@ -28,23 +30,23 @@ def pocketsphinx_installed():
 class TestSTT(unittest.TestCase):
 
     def setUp(self):
-        self.jasper_clip = jasperpath.data('audio', 'jasper.wav')
-        self.time_clip = jasperpath.data('audio', 'time.wav')
+        self.name_clip = settings.data('audio', 'jasper.wav')
+        self.time_clip = settings.data('audio', 'time.wav')
 
         self.passive_stt_engine = stt.PocketSphinxSTT.get_passive_instance()
         self.active_stt_engine = stt.PocketSphinxSTT.get_active_instance()
 
-    def testTranscribeJasper(self):
+    def testTranscribeName(self):
         """
-        Does Jasper recognize his name (i.e., passive listen)?
+        Do we recognize our name (i.e., passive listen)?
         """
-        with open(self.jasper_clip, mode="rb") as f:
+        with open(self.name_clip, mode="rb") as f:
             transcription = self.passive_stt_engine.transcribe(f)
-        self.assertIn("JASPER", transcription)
+        self.assertIn("JEEVES", transcription)
 
     def testTranscribe(self):
         """
-        Does Jasper recognize 'time' (i.e., active listen)?
+        Do we recognize 'time' (i.e., active listen)?
         """
         with open(self.time_clip, mode="rb") as f:
             transcription = self.active_stt_engine.transcribe(f)

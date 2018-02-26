@@ -1,8 +1,9 @@
 # -*- coding: utf-8-*-
 import feedparser
-from client import app_utils
 import re
 from semantic.numbers import NumberService
+
+from jeeves import app_utils
 
 WORDS = ["NEWS", "YES", "NO", "FIRST", "SECOND", "THIRD"]
 

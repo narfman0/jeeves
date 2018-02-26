@@ -6,8 +6,9 @@ import urllib
 import feedparser
 import requests
 import bs4
-from client.app_utils import getTimezone
 from semantic.dates import DateService
+
+from jeeves.app_utils import getTimezone
 
 WORDS = ["WEATHER", "TODAY", "TOMORROW"]
 
