@@ -21,9 +21,9 @@ if pip_version >= (1, 5):
 
 
 setup(
-    name=jeeves.__title__,
-    version=jeeves.__version__,
-    description=jeeves.__description__,
+    name='jeeves-pa',
+    version='0.0.2',
+    description="Jeeves is a FOSS personal assistant",
     classifiers=[
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: MIT License',
@@ -44,5 +44,13 @@ setup(
         'console_scripts': [
             'jeeves=jeeves:main'
         ],
+        'jeeves.stt': [
+            'att = jeeves.stt:AttSTT',
+            'google = jeeves.stt:GoogleSTT',
+            'sphinx = jeeves.stt:PocketSphinxSTT',
+            'julius = jeeves.stt:JuliusSTT',
+            'witai = jeeves.stt:WitAiSTT',
+        ],
     },
+    test_suite='tests',
 )

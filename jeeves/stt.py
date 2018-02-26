@@ -5,6 +5,7 @@ import wave
 import json
 import tempfile
 import logging
+from pkg_resources import iter_entry_points
 import urllib
 import urlparse
 import re
@@ -649,12 +650,5 @@ def get_engine_by_slug(slug=None):
 
 
 def get_engines():
-    def get_subclasses(cls):
-        subclasses = set()
-        for subclass in cls.__subclasses__():
-            subclasses.add(subclass)
-            subclasses.update(get_subclasses(subclass))
-        return subclasses
-    return [tts_engine for tts_engine in
-            list(get_subclasses(AbstractSTTEngine))
-            if hasattr(tts_engine, 'SLUG') and tts_engine.SLUG]
+    engines = list(iter_entry_points(group='jeeves.stt'))
+    return [engine.load() for engine in engines]
