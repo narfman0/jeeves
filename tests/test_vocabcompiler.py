@@ -6,7 +6,7 @@ import contextlib
 import logging
 import shutil
 import mock
-from client import vocabcompiler
+from jeeves import vocabcompiler
 
 
 class TestVocabCompiler(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestVocabCompiler(unittest.TestCase):
         mock_module = mock.Mock()
         mock_module.WORDS = ['MOCK']
 
-        with mock.patch('client.brain.Brain.get_modules',
+        with mock.patch('jeeves.brain.Brain.get_modules',
                         classmethod(lambda cls: [mock_module])):
             extracted_phrases = vocabcompiler.get_all_phrases()
         self.assertEqual(expected_phrases, extracted_phrases)
@@ -127,9 +127,9 @@ class TestPocketsphinxVocabulary(TestVocabulary):
                         'BAD': ['B AE D'],
                         'UGLY': ['AH G L IY']}
 
-        with mock.patch('client.vocabcompiler.cmuclmtk',
+        with mock.patch('jeeves.vocabcompiler.cmuclmtk',
                         create=True) as mocked_cmuclmtk:
             mocked_cmuclmtk.text2vocab = write_test_vocab
             mocked_cmuclmtk.text2lm = write_test_lm
-            with mock.patch('client.vocabcompiler.PhonetisaurusG2P', DummyG2P):
+            with mock.patch('jeeves.vocabcompiler.PhonetisaurusG2P', DummyG2P):
                 self.testVocabulary()

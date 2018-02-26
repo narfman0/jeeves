@@ -38,9 +38,7 @@ try:
 except ImportError:
     pass
 
-import diagnose
-
-from jeeves import settings
+from jeeves import diagnose, settings
 
 
 class AbstractTTSEngine(object):

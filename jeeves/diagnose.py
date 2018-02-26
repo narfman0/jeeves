@@ -10,6 +10,7 @@ import pip.req
 
 from jeeves import settings
 
+
 if sys.version_info < (3, 3):
     from distutils.spawn import find_executable
 else:

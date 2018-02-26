@@ -1,9 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8-*-
 import unittest
-from jeeves import settings
-from client import test_mic, diagnose
-from client.modules import Life, Joke, Time, Gmail, HN, News, Weather
+from jeeves import settings, test_mic, diagnose
+from jeeves.modules import Life, Joke, Time, Gmail, HN, News, Weather
 
 DEFAULT_PROFILE = {
     'prefers_email': False,

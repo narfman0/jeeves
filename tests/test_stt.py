@@ -2,9 +2,8 @@
 # -*- coding: utf-8-*-
 import unittest
 import imp
-from client import stt
 
-from jeeves import settings
+from jeeves import settings, stt
 
 
 def cmuclmtk_installed():

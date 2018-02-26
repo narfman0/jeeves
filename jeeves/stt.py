@@ -13,9 +13,7 @@ from abc import ABCMeta, abstractmethod
 import requests
 import yaml
 
-from jeeves import settings
-import diagnose
-import vocabcompiler
+from jeeves import diagnose, settings, vocabcompiler
 
 
 class AbstractSTTEngine(object):

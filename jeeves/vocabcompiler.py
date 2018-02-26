@@ -16,10 +16,9 @@ import shutil
 from abc import ABCMeta, abstractmethod, abstractproperty
 import yaml
 
-import brain
+from jeeves import brain
 from jeeves import settings
-
-from g2p import PhonetisaurusG2P
+from jeeves.g2p import PhonetisaurusG2P
 try:
     import cmuclmtk
 except ImportError:

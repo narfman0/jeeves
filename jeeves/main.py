@@ -9,12 +9,9 @@ import logging
 import yaml
 import argparse
 
-from jeeves import tts
-from jeeves import stt
-from jeeves import diagnose
+from jeeves import diagnose, settings, stt, tts
 from jeeves.conversation import Conversation
 
-from jeeves import settings
 
 sys.path.append(settings.LIB_PATH)
 

@@ -1,7 +1,8 @@
 # -*- coding: utf-8-*-
 import logging
-from notifier import Notifier
-from brain import Brain
+
+from jeeves.notifier import Notifier
+from jeeves.brain import Brain
 
 
 class Conversation(object):

@@ -7,8 +7,7 @@ import logging
 
 import yaml
 
-import diagnose
-from jeeves import settings
+from jeeves import diagnose, settings
 
 
 class PhonetisaurusG2P(object):

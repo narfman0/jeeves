@@ -7,8 +7,8 @@ import tempfile
 import wave
 import audioop
 import pyaudio
-import alteration
 
+from jeeves import alteration
 from jeeves import settings
 
 
