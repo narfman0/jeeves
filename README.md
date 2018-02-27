@@ -8,7 +8,7 @@ Usage
 
 You must have a poopulated project first. Start with: `python -m jeeves.populate`
 
-Run with `python -m jeeves.main`
+Run with `python -m jeeves`
 
 License
 -------

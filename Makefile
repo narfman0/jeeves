@@ -28,7 +28,7 @@ lint: ## check style with flake8
 	open htmlcov/index.html
 
 test: ## run tests quickly with the default Python
-	tox
+	python -m unittest discover
 
 release: clean ## package and upload a release
 	python setup.py sdist upload
