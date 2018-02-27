@@ -2,8 +2,8 @@ import logging
 import pipes
 import subprocess
 import tempfile
-from jasper import diagnose
-from jasper import plugin
+from jeeves import diagnose
+from jeeves import plugin
 
 
 if not all(diagnose.check_executable(e) for e in ('text2wave', 'festival')):

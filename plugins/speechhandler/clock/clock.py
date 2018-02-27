@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
-from jasper import app_utils
-from jasper import plugin
+from jeeves import app_utils
+from jeeves import plugin
 
 
 class ClockPlugin(plugin.SpeechHandlerPlugin):

@@ -3,7 +3,7 @@ import imaplib
 import email
 import re
 from dateutil import parser
-from jasper import plugin
+from jeeves import plugin
 
 
 def get_sender(email):

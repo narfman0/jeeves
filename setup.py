@@ -6,16 +6,16 @@ import setuptools
 from setuptools.command.bdist_egg import bdist_egg
 from distutils.command.build import build
 
-APPNAME = 'jasper'
+APPNAME = 'jeeves'
 
 
-class jasper_bdist_egg(bdist_egg):
+class jeeves_bdist_egg(bdist_egg):
     def run(self):
         self.run_command('build_i18n')
         setuptools.command.bdist_egg.bdist_egg.run(self)
 
 
-class jasper_build_i18n(setuptools.Command):
+class jeeves_build_i18n(setuptools.Command):
     description = 'compile PO translations to MO files'
 
     user_options = []
@@ -40,7 +40,7 @@ class jasper_build_i18n(setuptools.Command):
                     f.write(msgfmt.Msgfmt(po_path).get())
 
 
-class jasper_build(build):
+class jeeves_build(build):
     sub_commands = build.sub_commands + [
         ('build_i18n', None)
     ]
@@ -48,19 +48,17 @@ class jasper_build(build):
 
 setuptools.setup(
     name=APPNAME,
-    version='2.0a1.dev1',
-    url='http://jasperproject.github.io/',
+    version='0.1.4',
+    url='http://github.com/narfman0/jeeves/',
     license='MIT',
 
-    author='Shubhro Saha, Charlie Marsh, Jan Holthuis',
+    author='Jon Robison',
     author_email=(
-        'saha@princeton.edu, ' +
-        'crmarsh@princeton.edu, ' +
-        'jan.holthuis@ruhr-uni-bochum.de'
+        'narfman0@gmail.com',
     ),
 
     description=(
-        'Jasper is an open source platform for developing ' +
+        'Jeeves is an open source platform for developing ' +
         'always-on, voice-controlled applications.'
     ),
 
@@ -101,14 +99,14 @@ setuptools.setup(
 
     entry_points={
         'console_scripts': [
-            'Jasper = %s.main:main' % APPNAME
+            'jeeves = %s.main:main' % APPNAME
         ]
     },
 
     cmdclass={
-        'bdist_egg': jasper_bdist_egg,
-        'build': jasper_build,
-        'build_i18n': jasper_build_i18n,
+        'bdist_egg': jeeves_bdist_egg,
+        'build': jeeves_build,
+        'build_i18n': jeeves_build_i18n,
     },
 
     test_suite='tests'

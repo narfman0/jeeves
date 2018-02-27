@@ -8,7 +8,7 @@ from application import USE_STANDARD_MIC, USE_TEXT_MIC, USE_BATCH_MIC
 
 
 def main(args=None):
-    parser = argparse.ArgumentParser(description='Jasper Voice Control Center')
+    parser = argparse.ArgumentParser(description='Jeeves Voice Control Center')
     parser.add_argument('--debug', action='store_true',
                         help='Show debug messages')
     list_info = parser.add_mutually_exclusive_group(required=False)
@@ -26,8 +26,7 @@ def main(args=None):
     p_args = parser.parse_args(args)
 
     print("*******************************************************")
-    print("*             JASPER - THE TALKING COMPUTER           *")
-    print("* (c) 2015 Shubhro Saha, Charlie Marsh & Jan Holthuis *")
+    print("*             JEEVES - THE TALKING COMPUTER           *")
     print("*******************************************************")
 
     # Set up logging
@@ -43,8 +42,8 @@ def main(args=None):
     else:
         used_mic = USE_STANDARD_MIC
 
-    # Run Jasper
-    app = application.Jasper(use_mic=used_mic,
+    # Run
+    app = application.Jeeves(use_mic=used_mic,
                              batch_file=p_args.batch_file)
     if p_args.list_plugins:
         app.list_plugins()

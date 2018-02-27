@@ -1,11 +1,10 @@
-# Jasper Birthday Plugin 
-# Copyright (C) 2015 Shubhro Saha, Charlie Marsh & Jan Holthuis
-# This file is distributed under the same license as the Jasper package.
+# Birthday Plugin 
+# This file is distributed under the same license as the Jeeves package.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Jasper 2.0\n"
+"Project-Id-Version: Jeeves 2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/jasperproject/jasper-client/issues\n"
 "POT-Creation-Date: 2015-10-30 19:00+0100\n"
 "PO-Revision-Date: 2016-06-18 00:16+0100\n"
@@ -19,8 +18,8 @@ msgid "BIRTHDAY"
 msgstr ""
 
 #: birthday/birthday.py:30
-msgid "I have not been authorized to query your Facebook. If you would like to check birthdays in the future, please visit the Jasper dashboard."
-msgstr "Je n'ai pas été autorisé pour accédé à votre compte Facebook. Si vous voulez vérifier les anniversaire, merci de visiter le tableau de bord de Jasper."
+msgid "I have not been authorized to query your Facebook. If you would like to check birthdays in the future, please visit the dashboard."
+msgstr "Je n'ai pas été autorisé pour accédé à votre compte Facebook. Si vous voulez vérifier les anniversaire, merci de visiter le tableau de bord."
 
 #: birthday/birthday.py:35
 msgid "I apologize, there's a problem with that service at the moment."

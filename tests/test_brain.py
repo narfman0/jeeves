@@ -2,8 +2,8 @@
 import unittest
 import tempfile
 import mock
-from jasper import testutils
-from jasper import brain
+from jeeves import testutils
+from jeeves import brain
 
 
 class ExamplePlugin(object):

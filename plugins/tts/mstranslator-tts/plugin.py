@@ -1,6 +1,6 @@
 import requests
 import mstranslator
-from jasper import plugin
+from jeeves import plugin
 
 
 class MicrosoftTranslatorTTSPlugin(plugin.TTSPlugin):

@@ -43,7 +43,7 @@ def email_user(profile, SUBJECT="", BODY=""):
 
     body = 'Hello %s,' % profile['first_name']
     body += '\n\n' + BODY.strip() + '\n\n'
-    body += 'Best Regards,\nJasper\n'
+    body += 'Best Regards,\nJeeves\n'
 
     recipient = None
 
@@ -74,7 +74,7 @@ def email_user(profile, SUBJECT="", BODY=""):
             password = profile['gmail_password']
             server = 'smtp.gmail.com'
         send_email(SUBJECT, body, recipient, user,
-                   "Jasper <jasper>", password, server)
+                   "Jeeves <jeeves>", password, server)
 
     except Exception:
         return False

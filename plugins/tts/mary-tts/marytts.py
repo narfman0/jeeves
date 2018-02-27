@@ -2,7 +2,7 @@ import logging
 import urllib
 import urlparse
 import requests
-from jasper import plugin
+from jeeves import plugin
 
 
 class MaryTTSPlugin(plugin.TTSPlugin):

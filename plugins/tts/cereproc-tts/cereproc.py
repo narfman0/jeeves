@@ -2,7 +2,7 @@ import os
 import tempfile
 import suds
 import urllib
-from jasper import plugin
+from jeeves import plugin
 
 VOICES = [
     ('Adam', 'en-US'),

@@ -4,8 +4,8 @@ import pipes
 import platform
 import subprocess
 import tempfile
-from jasper import diagnose
-from jasper import plugin
+from jeeves import diagnose
+from jeeves import plugin
 
 EXECUTABLE = 'say'
 

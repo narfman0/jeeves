@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 A drop-in replacement for the Mic class that allows for batch mode operation.
-Useful for debugging. Unlike with the typical Mic implementation, Jasper
-processes the given commands in the batchfile.
+Useful for debugging. Unlike with the typical Mic implementation, we
+process the given commands in the batchfile.
 """
 import os.path
 import logging
@@ -18,7 +18,7 @@ def parse_batch_file(fp):
 
 class Mic(object):
     def __init__(self, passive_stt_engine, active_stt_engine,
-                 batch_file, keyword='JASPER'):
+                 batch_file, keyword='JEEVES'):
         self._logger = logging.getLogger(__name__)
         self._keyword = keyword
         self.passive_stt_engine = passive_stt_engine
@@ -42,7 +42,7 @@ class Mic(object):
             transcribed = [command]
         return transcribed
 
-    def wait_for_keyword(self, keyword="JASPER"):
+    def wait_for_keyword(self, keyword="JEEVES"):
         return
 
     def active_listen(self, timeout=3):
@@ -60,4 +60,4 @@ class Mic(object):
         return self.active_listen()
 
     def say(self, phrase, OPTIONS=None):
-        print("JASPER: %s" % phrase)
+        print("JEEVES: %s" % phrase)

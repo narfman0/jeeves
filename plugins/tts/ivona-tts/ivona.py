@@ -2,7 +2,7 @@ import os
 import json
 import tempfile
 import pyvona
-from jasper import plugin
+from jeeves import plugin
 
 
 class IvonaTTSPlugin(plugin.TTSPlugin):

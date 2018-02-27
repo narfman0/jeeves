@@ -3,8 +3,8 @@ import collections
 import urllib
 import urlparse
 import feedparser
-from jasper import plugin
-from jasper import app_utils
+from jeeves import plugin
+from jeeves import app_utils
 
 FEED_URL = 'https://news.google.de/news/feeds'
 

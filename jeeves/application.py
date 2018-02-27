@@ -19,7 +19,7 @@ USE_TEXT_MIC = 1
 USE_BATCH_MIC = 2
 
 
-class Jasper(object):
+class Jeeves(object):
     def __init__(self, use_mic=USE_STANDARD_MIC, batch_file=None):
         self._logger = logging.getLogger(__name__)
 
@@ -34,7 +34,7 @@ class Jasper(object):
 
         # Check if config dir is writable
         if not os.access(paths.CONFIG_PATH, os.W_OK):
-            self._logger.critical("Config dir %s is not writable. Jasper " +
+            self._logger.critical("Config dir %s is not writable. Jeeves " +
                                   "won't work correctly.",
                                   paths.CONFIG_PATH)
 
@@ -112,7 +112,7 @@ class Jasper(object):
         try:
             keyword = self.config['keyword']
         except KeyError:
-            keyword = 'Jasper'
+            keyword = 'Jeeves'
         self._logger.info("Using keyword '%s'", keyword)
 
         # Load plugins

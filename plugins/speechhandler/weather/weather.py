@@ -3,7 +3,7 @@ import collections
 import datetime
 import dateutil.parser
 import requests
-from jasper import plugin
+from jeeves import plugin
 
 YAHOO_YQL_QUERY_WOEID = \
     'SELECT * FROM geo.places WHERE text="%s"'

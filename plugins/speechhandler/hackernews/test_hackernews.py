@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import unittest
-from jasper import testutils, diagnose
+from jeeves import testutils, diagnose
 from . import hackernews
 
 
-class TestGmailPlugin(unittest.TestCase):
+class TestHackernewsPlugin(unittest.TestCase):
     def setUp(self):
         self.plugin = testutils.get_plugin_instance(
             hackernews.HackerNewsPlugin)

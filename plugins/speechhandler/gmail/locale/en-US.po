@@ -1,6 +1,5 @@
-# Jasper Gmail Plugin 
-# Copyright (C) 2015 Shubhro Saha, Charlie Marsh & Jan Holthuis
-# This file is distributed under the same license as the Jasper package.
+# Jeeves Gmail Plugin 
+# This file is distributed under the same license as the Jeeves package.
 #
 #, fuzzy
 msgid ""

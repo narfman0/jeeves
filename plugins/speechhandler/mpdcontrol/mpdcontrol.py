@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import difflib
 import logging
-from jasper import plugin
+from jeeves import plugin
 from . import mpdclient
 
 

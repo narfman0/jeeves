@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
-from jasper import paths
-from jasper import testutils
+from jeeves import paths
+from jeeves import testutils
 from .. import sphinxplugin
 
 

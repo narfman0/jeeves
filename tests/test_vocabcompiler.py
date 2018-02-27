@@ -5,7 +5,7 @@ import contextlib
 import logging
 import shutil
 import mock
-from jasper import vocabcompiler
+from jeeves import vocabcompiler
 
 
 class StrangeCompilationError(Exception):

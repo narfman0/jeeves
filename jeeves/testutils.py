@@ -18,7 +18,7 @@ class TestMic(object):
         self.idx = 0
         self.outputs = []
 
-    def wait_for_keyword(self, keyword="JASPER"):
+    def wait_for_keyword(self, keyword="JEEVES"):
         return
 
     def active_listen(self, timeout=3):

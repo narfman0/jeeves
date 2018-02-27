@@ -1,6 +1,6 @@
 import logging
 import requests
-from jasper import plugin
+from jeeves import plugin
 
 SUPPORTED_LANGUAGES = ['en-US', 'es-US']
 
