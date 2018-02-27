@@ -6,7 +6,7 @@ Jeeves is a personal assistant similar to alexa/google, based on code from the j
 Usage
 -----
 
-You must have a poopulated project first. Start with: `python -m jeeves.populate`
+You must have a populated project first. Start with: `python -m jeeves.populate`
 
 Run with `python -m jeeves`
 

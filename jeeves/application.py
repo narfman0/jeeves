@@ -195,11 +195,20 @@ class Jeeves(object):
             self._logger.error(msg)
             raise RuntimeError(msg)
 
-        active_stt_plugin_info = self.plugins.get_plugin(
-            active_stt_slug, category='stt')
-        active_stt_plugin = active_stt_plugin_info.plugin_class(
-            'default', self.brain.get_plugin_phrases(), active_stt_plugin_info,
-            self.config)
+        try:
+            # try old style plugins
+            active_stt_plugin_info = self.plugins.get_plugin(
+                active_stt_slug, category='stt')
+            active_stt_plugin = active_stt_plugin_info.plugin_class(
+                'default', self.brain.get_plugin_phrases(), active_stt_plugin_info,
+                self.config)
+        except:
+            # try new style python entry_points friendly plugins
+            stt_engines = list(pkg_resources.iter_entry_points(group='jeeves.stt'))
+            for engine in stt_engines:
+                if engine.name == active_stt_slug:
+                    active_stt_plugin = engine.load()
+                    active_stt_plugin_info = None
 
         if passive_stt_slug != active_stt_slug:
             passive_stt_plugin_info = self.plugins.get_plugin(
@@ -207,9 +216,15 @@ class Jeeves(object):
         else:
             passive_stt_plugin_info = active_stt_plugin_info
 
-        passive_stt_plugin = passive_stt_plugin_info.plugin_class(
-            'keyword', self.brain.get_standard_phrases() + [keyword],
-            passive_stt_plugin_info, self.config)
+        try:
+            passive_stt_plugin = passive_stt_plugin_info.plugin_class(
+                'keyword', self.brain.get_standard_phrases() + [keyword],
+                passive_stt_plugin_info, self.config)
+        except:
+            stt_engines = list(pkg_resources.iter_entry_points(group='jeeves.stt'))
+            for engine in stt_engines:
+                if engine.name == passive_stt_slug:
+                    passive_stt_plugin = engine.load()
 
         tts_plugin_info = self.plugins.get_plugin(tts_slug, category='tts')
         tts_plugin = tts_plugin_info.plugin_class(tts_plugin_info, self.config)

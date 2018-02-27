@@ -47,8 +47,8 @@ class jeeves_build(build):
 
 
 setuptools.setup(
-    name=APPNAME,
-    version='0.1.4',
+    name='jeeves-pa',
+    version='0.0.3',
     url='http://github.com/narfman0/jeeves/',
     license='MIT',
 
@@ -99,8 +99,9 @@ setuptools.setup(
 
     entry_points={
         'console_scripts': [
-            'jeeves = %s.main:main' % APPNAME
-        ]
+            'jeeves = %s.main:main' % APPNAME,
+        ],
+        'jeeves.stt': [],
     },
 
     cmdclass={
@@ -109,5 +110,5 @@ setuptools.setup(
         'build_i18n': jeeves_build_i18n,
     },
 
-    test_suite='tests'
+    test_suite='tests',
 )
