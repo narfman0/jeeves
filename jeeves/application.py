@@ -195,6 +195,16 @@ class Jeeves(object):
             self._logger.error(msg)
             raise RuntimeError(msg)
 
+
+        def create_stt_engine(slug):
+            stt_engines = list(pkg_resources.iter_entry_points(group='jeeves.stt'))
+            for engine in stt_engines:
+                if engine.name == slug:
+                    engine_class = engine.load()
+                    return engine_class('default', self.brain.get_plugin_phrases(), None,
+                                        self.config)
+            return None
+
         try:
             # try old style plugins
             active_stt_plugin_info = self.plugins.get_plugin(
@@ -204,11 +214,8 @@ class Jeeves(object):
                 self.config)
         except:
             # try new style python entry_points friendly plugins
-            stt_engines = list(pkg_resources.iter_entry_points(group='jeeves.stt'))
-            for engine in stt_engines:
-                if engine.name == active_stt_slug:
-                    active_stt_plugin = engine.load()
-                    active_stt_plugin_info = None
+            active_stt_plugin = create_stt_engine(active_stt_slug)
+            active_stt_plugin_info = None
 
         if passive_stt_slug != active_stt_slug:
             passive_stt_plugin_info = self.plugins.get_plugin(
@@ -221,10 +228,7 @@ class Jeeves(object):
                 'keyword', self.brain.get_standard_phrases() + [keyword],
                 passive_stt_plugin_info, self.config)
         except:
-            stt_engines = list(pkg_resources.iter_entry_points(group='jeeves.stt'))
-            for engine in stt_engines:
-                if engine.name == passive_stt_slug:
-                    passive_stt_plugin = engine.load()
+            passive_stt_plugin = create_stt_engine(passive_stt_slug)
 
         tts_plugin_info = self.plugins.get_plugin(tts_slug, category='tts')
         tts_plugin = tts_plugin_info.plugin_class(tts_plugin_info, self.config)
