@@ -47,7 +47,7 @@ class jeeves_build(build):
 
 setuptools.setup(
     name='jeeves-pa',
-    version='0.0.4',
+    version='0.1.0',
     url='http://github.com/narfman0/jeeves/',
     license='MIT',
 
@@ -88,13 +88,14 @@ setuptools.setup(
     data_files=[
         ('share/doc/%s' % APPNAME, [
             'LICENSE.md',
-            'README.md'
+            'README.rst'
         ])
     ],
 
     entry_points={
         'console_scripts': [
-            'jeeves = %s.main:main' % APPNAME,
+            'jeeves = %s:main' % APPNAME,
+            'jeeves-populate = %s.populate:run' % APPNAME,
         ],
     },
 

@@ -9,12 +9,26 @@ jeeves
 
 Jeeves is a personal assistant similar to alexa/google, based on code from the jasper project.
 
+Installation
+------------
+
+To install, we first recommend a python virtual environment. Then::
+
+    pip install jeeves-pa
+
+To populate the initial configuration, run::
+
+    jeeves-populate
+
+Note: default input/output works in most cases, but you will likely have to tweak
+this to work for you.
+
 Usage
 -----
 
-You must have a populated project first. Start with: `python -m jeeves.populate`
+Run jeeves from the command line with::
 
-Run with `python -m jeeves`
+    jeeves
 
 TODO
 ----
