@@ -1,4 +1,3 @@
-#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 import os
 import msgfmt
@@ -53,9 +52,7 @@ setuptools.setup(
     license='MIT',
 
     author='Jon Robison',
-    author_email=(
-        'narfman0@gmail.com',
-    ),
+    author_email='narfman0@gmail.com',
 
     description=(
         'Jeeves is an open source platform for developing ' +
@@ -90,8 +87,6 @@ setuptools.setup(
 
     data_files=[
         ('share/doc/%s' % APPNAME, [
-            'AUTHORS.md',
-            'CONTRIBUTING.md',
             'LICENSE.md',
             'README.md'
         ])
@@ -101,7 +96,6 @@ setuptools.setup(
         'console_scripts': [
             'jeeves = %s.main:main' % APPNAME,
         ],
-        'jeeves.stt': [],
     },
 
     cmdclass={

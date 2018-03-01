@@ -129,8 +129,7 @@ class Mic(object):
                     dbg = (self._logger.getEffectiveLevel() == logging.DEBUG)
                     self._logger.error("Transcription failed!", exc_info=dbg)
                 else:
-                    if transcribed and any([keyword.lower() in t.lower()
-                                            for t in transcribed if t]):
+                    if keyword.lower() in transcribed:
                         keyword_uttered.set()
                 finally:
                     frame_queue.task_done()
