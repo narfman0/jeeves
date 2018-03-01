@@ -1,31 +1,13 @@
-env:
-    - ARCH=x86
 language: python
 sudo: false
-python:
-    - "2.7"
-cache:
-  directories:
-    - "$HOME/.pip-cache/"
-    - "/home/travis/virtualenv/python2.7"
+python: 3.6
+env:
+  - TOX_ENV=py3
+  - TOX_ENV=py27
 addons:
   apt:
     packages:
     - libmad0
     - libmad0-dev
-install: 
-    # Install jasper core dependencies
-    - "pip install -r requirements.txt --download-cache $HOME/.pip-cache"
-    - "curl http://spacepants.org/src/pymad/download/pymad-0.6.tar.gz | tar xzvf - && cd pymad-0.6 && python config_unix.py && python setup.py install && cd .."
-    # Install additional testing software
-    - "pip install python-coveralls --download-cache $HOME/.pip-cache"
-    - "pip install coverage  --download-cache $HOME/.pip-cache"
-    - "pip install flake8  --download-cache $HOME/.pip-cache"
-    - "python ./setup.py install"
-before_script:
-    - "flake8 setup.py jasper tests"
-script:
-    - "coverage run ./setup.py test"
-after_success:
-    - "coverage report"
-    - "coveralls"
+install: pip install -r requirements_test.txt
+script: tox -e $TOX_ENV

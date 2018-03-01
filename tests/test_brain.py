@@ -62,14 +62,14 @@ class TestBrain(unittest.TestCase):
         self.assertEqual(expected_phrases, extracted_phrases)
 
     def testStandardPhraseExtraction(self):
-        expected_phrases = ['MOCK']
+        expected_phrases = [b'MOCK']
 
         my_brain = brain.Brain(testutils.TEST_PROFILE)
 
         with tempfile.TemporaryFile() as f:
             # We can't use mock_open here, because it doesn't seem to work
             # with the 'for line in f' syntax
-            f.write("MOCK\n")
+            f.write(b"MOCK\n")
             f.seek(0)
             with mock.patch('%s.open' % brain.__name__,
                             return_value=f, create=True):

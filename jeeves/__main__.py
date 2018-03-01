@@ -3,8 +3,8 @@ import sys
 import logging
 import argparse
 
-from . import application
-from application import USE_STANDARD_MIC, USE_TEXT_MIC, USE_BATCH_MIC
+from jeeves import application
+from jeeves.application import USE_STANDARD_MIC, USE_TEXT_MIC, USE_BATCH_MIC
 
 
 def main(args=None):

@@ -47,7 +47,7 @@ class jeeves_build(build):
 
 setuptools.setup(
     name='jeeves-pa',
-    version='0.0.3',
+    version='0.0.4',
     url='http://github.com/narfman0/jeeves/',
     license='MIT',
 
@@ -62,11 +62,11 @@ setuptools.setup(
     install_requires=[
         'APScheduler',
         'argparse',
-        'mock',
+        'mad',
         'python-slugify',
         'pytz',
         'PyYAML',
-        'requests'
+        'requests',
     ],
 
     packages=[APPNAME],
